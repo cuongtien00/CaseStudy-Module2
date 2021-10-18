@@ -1,16 +1,19 @@
 package model;
 
 public class MilkTea {
+    private String code;
     private String name;
     private String size;
     private String sugarPercent;
     private String icePercent;
+    private int quantitySold;
     private double price;
 
     public MilkTea() {
     }
 
-    public MilkTea(String name, String size, String sugarPercent, String icePercent) {
+    public MilkTea(String code,String name, String size, String sugarPercent, String icePercent) {
+        this.code = code;
         this.name = name;
         this.size = size;
         this.sugarPercent = sugarPercent;
@@ -47,6 +50,14 @@ public class MilkTea {
 
     public void setIcePercent(String icePercent) {
         this.icePercent = icePercent;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
