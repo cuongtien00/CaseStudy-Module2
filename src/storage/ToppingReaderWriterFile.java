@@ -1,19 +1,17 @@
 package storage;
 
 import model.Order;
+import model.Topping;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderReaderWriterFile {
-    private static OrderReaderWriterFile orderReaderWriterFile;
-
-    private OrderReaderWriterFile() {
-    }
-
-    public List<Order> fileReader() throws IOException, ClassNotFoundException {
-        File file = new File("orderlist.dat");
+public class ToppingReaderWriterFile {
+    private static ToppingReaderWriterFile toppingReaderWriterFile;
+    private ToppingReaderWriterFile(){}
+    public List<Topping> fileReader() throws IOException, ClassNotFoundException {
+        File file = new File("toppinglist.dat");
 
 
         if (!file.exists()) {
@@ -22,25 +20,19 @@ public class OrderReaderWriterFile {
         if (file.length() > 0) {
             FileInputStream is = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(is);
-            List<Order> list = (List<Order>) ois.readObject();
+            List<Topping> list = (List<Topping>) ois.readObject();
 
             ois.close();
             is.close();
             return list;
         } else return new ArrayList<>();
-
     }
-
-
-    public void fileWriter(List<Order> orders) throws IOException {
-        FileOutputStream os = new FileOutputStream("orderlist.dat");
+    public void fileWriter(List<Topping> toppings) throws IOException {
+        FileOutputStream os = new FileOutputStream("toppinglist.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
 
         oos = new ObjectOutputStream(os);
         oos.close();
         os.close();
-
-
     }
 }
-
