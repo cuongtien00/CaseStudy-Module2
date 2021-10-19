@@ -9,6 +9,12 @@ import java.util.List;
 public class ToppingReaderWriterFile {
     private static ToppingReaderWriterFile toppingReaderWriterFile;
     private ToppingReaderWriterFile(){}
+    public static ToppingReaderWriterFile getInstance(){
+        if(toppingReaderWriterFile == null){
+            toppingReaderWriterFile = new ToppingReaderWriterFile();
+        }
+        return toppingReaderWriterFile;
+    }
     public List<Topping> fileReader() throws IOException, ClassNotFoundException {
         File file = new File("toppinglist.dat");
 

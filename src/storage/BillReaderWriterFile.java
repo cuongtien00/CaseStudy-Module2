@@ -11,6 +11,12 @@ public class BillReaderWriterFile {
 
     private BillReaderWriterFile() {
     }
+    public static BillReaderWriterFile getInstance(){
+        if (billReaderWriterFile == null){
+            billReaderWriterFile = new BillReaderWriterFile();
+        }
+        return billReaderWriterFile;
+    }
 
     public List<Bill> fileReader() throws IOException, ClassNotFoundException {
         File file = new File("billlist.dat");

@@ -8,25 +8,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MilkTeaManager {
-    private List<MilkTea> milkTeaList;
-    private MilkTeaReaderWriterFile milkTeaReaderWriterFile;
+    private static MilkTeaManager milkTeaManager;
+    private static List<MilkTea> milkTeaList= new ArrayList<>();
+    private  MilkTeaReaderWriterFile milkTeaReaderWriterFile;
 
-    public MilkTeaManager(List<MilkTea> milkTeaList) {
-        this.milkTeaList = milkTeaList;
+    private MilkTeaManager(){}
+    public static MilkTeaManager getInstance(){
+        if(milkTeaManager==null){
+            milkTeaManager = new MilkTeaManager();
+        }
+        return milkTeaManager;
     }
 
-    public void addNewMilkTea(MilkTea milkTea) throws IOException {
+    public static MilkTeaManager getMilkTeaManager() {        return milkTeaManager;
+    }
+
+    public static void setMilkTeaManager(MilkTeaManager milkTeaManager) {
+        MilkTeaManager.milkTeaManager = milkTeaManager;
+    }
+
+    public MilkTeaReaderWriterFile getMilkTeaReaderWriterFile() {
+        return milkTeaReaderWriterFile;
+    }
+
+    public void setMilkTeaReaderWriterFile(MilkTeaReaderWriterFile milkTeaReaderWriterFile) {
+        this.milkTeaReaderWriterFile = milkTeaReaderWriterFile;
+    }
+
+
+    public int findByCode(String code){
+        for (MilkTea a:milkTeaList) {
+            if(a.getCode().equalsIgnoreCase(code)){
+               return milkTeaList.indexOf(a);
+            }
+        }
+        return -1;
+    }
+
+
+    public void addNewMilkTea(MilkTea milkTea) {
         milkTeaList.add(milkTea);
-        milkTeaReaderWriterFile.fileWriter(milkTeaList);
+//        milkTeaReaderWriterFile.fileWriter(milkTeaList);
     }
-    public void removeMilkTea(int index) throws IOException {
+    public void removeMilkTea(String code) {
+        int index = findByCode(code);
         milkTeaList.remove(index);
-        milkTeaReaderWriterFile.fileWriter(milkTeaList);
+//        milkTeaReaderWriterFile.fileWriter(milkTeaList);
     }
-    public void editMilkTeaList(int index, MilkTea milkTea) throws IOException {
+    public void editMilkTeaList(String code, MilkTea milkTea)  {
+        int index = findByCode(code);
         milkTeaList.set(index,milkTea);
-        milkTeaReaderWriterFile.fileWriter(milkTeaList);
-    };
+//        milkTeaReaderWriterFile.fileWriter(milkTeaList);
+    }
     public int getBestSeller(){
         return 1;
     };

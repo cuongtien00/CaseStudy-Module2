@@ -6,6 +6,12 @@ public class MilkTea implements Serializable {
     private String code;
     private String name;
     private double price;
+    private String size;
+    private int quantity;
+    private String sugar;
+    private String ice;
+    private Topping topping;
+
 
     public MilkTea() {
     }
@@ -14,6 +20,17 @@ public class MilkTea implements Serializable {
         this.code = code;
         this.name = name;
         this.price = price;
+    }
+
+    public MilkTea(String code, String name, double price, String size, int quantity, String sugar, String ice, Topping topping) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.size = size;
+        this.quantity = quantity;
+        this.sugar = sugar;
+        this.ice = ice;
+        this.topping = topping;
     }
 
     public String getCode() {
@@ -38,6 +55,46 @@ public class MilkTea implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getSugar() {
+        return sugar;
+    }
+
+    public void setSugar(String sugar) {
+        this.sugar = sugar;
+    }
+
+    public String getIce() {
+        return ice;
+    }
+
+    public void setIce(String ice) {
+        this.ice = ice;
+    }
+
+    public Topping getTopping() {
+        return topping;
+    }
+
+    public void setTopping(Topping topping) {
+        this.topping = topping;
     }
 
     @Override

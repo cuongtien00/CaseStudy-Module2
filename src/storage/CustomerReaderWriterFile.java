@@ -18,7 +18,7 @@ public class CustomerReaderWriterFile {
     }
 
     public List<Customer> fileReader() throws IOException, ClassNotFoundException {
-        File file = new File("customer.dat");
+        File file = new File("customerlist.dat");
         if(!file.exists()){
             file.createNewFile();
         }
@@ -35,7 +35,7 @@ public class CustomerReaderWriterFile {
         else return new ArrayList<>();
     }
     public void fileWriter(List<Customer> customers) throws IOException {
-        FileOutputStream os = new FileOutputStream("customer.dat");
+        FileOutputStream os = new FileOutputStream("customerlist.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
 
         oos.writeObject(customers);

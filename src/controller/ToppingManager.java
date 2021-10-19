@@ -8,23 +8,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToppingManager {
-    private  List<Topping> toppings;
+    private static ToppingManager toppingManager;
+    private static List<Topping>toppings = new ArrayList<>();
+    private ToppingManager(){};
+    public static ToppingManager getInstance(){
+        if(toppingManager == null){
+            toppingManager = new ToppingManager();
+        }
+        return toppingManager;
+    }
     private ToppingReaderWriterFile toppingReaderWriterFile;
 
-    public ToppingManager() {
-        toppings = new ArrayList<>();
-    }
-    public void addNewTop(Topping topping) throws IOException {
+    public void addNewTop(Topping topping) {
         toppings.add(topping);
-        toppingReaderWriterFile.fileWriter(toppings);
+//        toppingReaderWriterFile.fileWriter(toppings);
     }
-    public void removeT(int index) throws IOException {
+    public int findById(String id){
+        for (Topping a:toppings) {
+            if(a.getId().equalsIgnoreCase(id)){
+                return toppings.indexOf(a);
+            }
+        }
+        return -1;
+    }
+    public void removeT(String id) {
+        int index = findById(id);
         toppings.remove(index);
-        toppingReaderWriterFile.fileWriter(toppings);
+//        toppingReaderWriterFile.fileWriter(toppings);
     }
-    public void editTop(int index, Topping topping) throws IOException {
+    public void editTop(String id, Topping topping)  {
+        int index = findById(id);
         toppings.set(index,topping);
-        toppingReaderWriterFile.fileWriter(toppings);
+//        toppingReaderWriterFile.fileWriter(toppings);
     }
     public void showList(){
         for (Topping a:toppings) {

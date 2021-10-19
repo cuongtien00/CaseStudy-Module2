@@ -11,8 +11,14 @@ public class MilkTeaReaderWriterFile {
 
     private MilkTeaReaderWriterFile() {
     }
+    public static MilkTeaReaderWriterFile getInstance(){
+        if(milkTeaReaderWriterFile == null){
+            milkTeaReaderWriterFile = new MilkTeaReaderWriterFile();
+        }
+        return milkTeaReaderWriterFile;
+    }
     public List<MilkTea> fileReader() throws IOException, ClassNotFoundException {
-        File file = new File("milktea.dat");
+        File file = new File("milktealist.dat");
         if(!file.exists()){
             file.createNewFile();
         }
@@ -28,7 +34,7 @@ public class MilkTeaReaderWriterFile {
         else return new ArrayList<>();
     }
     public void fileWriter(List<MilkTea> milkTeas) throws IOException {
-        FileOutputStream os = new FileOutputStream("milktea.dat");
+        FileOutputStream os = new FileOutputStream("milktealist.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
 
         oos.writeObject(milkTeas);

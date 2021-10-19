@@ -6,34 +6,34 @@ import storage.BillReaderWriterFile;
 import java.io.IOException;
 import java.util.List;
 
-public class OrderManager {
+public class BillManager {
     private List<Bill> billList;
     private BillReaderWriterFile billReaderWriterFile;
 
-    public OrderManager() {
+    public BillManager() {
     }
 
-    public OrderManager(List<Bill> billList) {
+    public BillManager(List<Bill> billList) {
         this.billList = billList;
     }
 
-    public List<Bill> getOrderList() {
+    public List<Bill> getBillList() {
         return billList;
     }
-    public void addNewOrder(Bill bill) throws IOException {
+    public void addNewBill(Bill bill) throws IOException {
         billList.add(bill);
         billReaderWriterFile.fileWriter(billList);
     }
-    public void editOrder(int index, Bill bill) throws IOException {
+    public void editBill(int index, Bill bill) throws IOException {
         billList.set(index, bill);
         billReaderWriterFile.fileWriter(billList);
     }
-    public void removeOrder(Bill bill) throws IOException {
+    public void removeBill(Bill bill) throws IOException {
         billList.remove(bill);
         billReaderWriterFile.fileWriter(billList);
     }
 
-    public void setOrderList(List<Bill> billList) {
+    public void setBillList(List<Bill> billList) {
         this.billList = billList;
     }
     public void showList(){
