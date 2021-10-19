@@ -1,19 +1,19 @@
 package storage;
 
-import model.Order;
+import model.Bill;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderReaderWriterFile {
-    private static OrderReaderWriterFile orderReaderWriterFile;
+public class BillReaderWriterFile {
+    private static BillReaderWriterFile billReaderWriterFile;
 
-    private OrderReaderWriterFile() {
+    private BillReaderWriterFile() {
     }
 
-    public List<Order> fileReader() throws IOException, ClassNotFoundException {
-        File file = new File("orderlist.dat");
+    public List<Bill> fileReader() throws IOException, ClassNotFoundException {
+        File file = new File("billlist.dat");
 
 
         if (!file.exists()) {
@@ -22,7 +22,7 @@ public class OrderReaderWriterFile {
         if (file.length() > 0) {
             FileInputStream is = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(is);
-            List<Order> list = (List<Order>) ois.readObject();
+            List<Bill> list = (List<Bill>) ois.readObject();
 
             ois.close();
             is.close();
@@ -32,15 +32,14 @@ public class OrderReaderWriterFile {
     }
 
 
-    public void fileWriter(List<Order> orders) throws IOException {
-        FileOutputStream os = new FileOutputStream("orderlist.dat");
+    public void fileWriter(List<Bill> bills) throws IOException {
+        FileOutputStream os = new FileOutputStream("billlist.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
 
         oos = new ObjectOutputStream(os);
         oos.close();
         os.close();
-
-
     }
+
 }
 

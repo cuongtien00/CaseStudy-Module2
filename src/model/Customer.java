@@ -1,6 +1,9 @@
 package model;
 
-public class Customer {
+import java.io.Serializable;
+import java.util.Scanner;
+
+public class Customer implements Serializable {
     private String name;
     private String address;
 
@@ -26,6 +29,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public Customer inputInfo(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nhập tên khách hàng");
+        String name = input.nextLine();
+        System.out.println("Nhập địa chỉ");
+        String add = input.nextLine();
+        return new Customer(name,add);
     }
 
     @Override

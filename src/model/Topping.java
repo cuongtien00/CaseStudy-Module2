@@ -1,6 +1,8 @@
 package model;
 
-public class Topping {
+import java.io.Serializable;
+
+public class Topping implements Serializable {
     private String name;
     private double price;
 

@@ -1,35 +1,45 @@
 package controller;
 
-import model.MilkTea;
-import model.Order;
+import model.Bill;
+import storage.BillReaderWriterFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public class OrderManager {
-    private List<Order>orderList;
+    private List<Bill> billList;
+    private BillReaderWriterFile billReaderWriterFile;
 
     public OrderManager() {
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-    public void addNewOrder(Order order){
-        orderList.add(order);
-    }
-    public void editOrder(int index, Order order){
-        orderList.set(index,order);
-    }
-    public void removeOrder(Order order){
-        orderList.remove(order);
+    public OrderManager(List<Bill> billList) {
+        this.billList = billList;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public List<Bill> getOrderList() {
+        return billList;
+    }
+    public void addNewOrder(Bill bill) throws IOException {
+        billList.add(bill);
+        billReaderWriterFile.fileWriter(billList);
+    }
+    public void editOrder(int index, Bill bill) throws IOException {
+        billList.set(index, bill);
+        billReaderWriterFile.fileWriter(billList);
+    }
+    public void removeOrder(Bill bill) throws IOException {
+        billList.remove(bill);
+        billReaderWriterFile.fileWriter(billList);
+    }
+
+    public void setOrderList(List<Bill> billList) {
+        this.billList = billList;
     }
     public void showList(){
-        for (Order a:orderList) {
+        for (Bill a: billList) {
             System.out.println(a);
         }
     }
+
 }
