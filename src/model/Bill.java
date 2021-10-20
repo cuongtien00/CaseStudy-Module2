@@ -14,7 +14,11 @@ public class Bill implements Serializable {
     public List<MilkTea> getMilkTeaList() {
         return milkTeaList;
     }
-public void addNewMilkTea(MilkTea milkTea){
+
+    public Bill() {
+    }
+
+    public void addNewMilkTea(MilkTea milkTea){
         milkTeaList.add(milkTea);
 }
     public void setMilkTeaList(List<MilkTea> milkTeaList) {

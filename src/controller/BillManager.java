@@ -58,8 +58,9 @@ public class BillManager {
         this.billList = billList;
     }
     public void showList(){
+        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   ＝＝BILL-LIST＝＝");
         for (Bill a: billList) {
-            System.out.println(a);
+            System.out.println("                                          "+a);
         }
     }
 

@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String id;
     private String password;
+    private String role;
 
     public User() {
     }
@@ -12,6 +13,12 @@ public class User implements Serializable {
     public User(String id, String password) {
         this.id = id;
         this.password = password;
+    }
+
+    public User(String id, String password, String role) {
+        this.id = id;
+        this.password = password;
+        this.role = role;
     }
 
     public String getId() {
@@ -30,11 +37,20 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
-                ", password='" + password + '\'' +
+                "id='" + id +
+                ", password='" + password  +
+                ", role='" + role +
                 '}';
     }
 }

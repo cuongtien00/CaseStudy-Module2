@@ -64,7 +64,7 @@ public class MilkTeaManager {
         return 1;
     };
     public void showList(){
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　＝＝TEA＝＝");
+        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　＝＝TEA_MENU＝＝");
         for (MilkTea a:milkTeaList) {
             System.out.println("                  "+a);
         }

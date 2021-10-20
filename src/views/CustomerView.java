@@ -8,7 +8,16 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CustomerView {
-    public static void main(String[] args) {
+    private static CustomerView customerView;
+    private CustomerView(){}
+    public static CustomerView getInstance(){
+        if(customerView == null){
+            customerView = new CustomerView();
+        }
+        return customerView;
+    }
+
+    public void runCustomerView(){
 
 
 
@@ -76,6 +85,6 @@ public class CustomerView {
         System.out.println("                                           　　　　      " +"2. Xóa customer: ");
         System.out.println("                                           　　　　      " +"3. Sửa customer: ");
         System.out.println("                                           　　　　      " +"4. Customer Menu: ");
-        System.out.println("                                           　　　　      " +"5. Quay lại: ");
+        System.out.println("                                           　　　　      " +"0. Exit: ");
     }
 }

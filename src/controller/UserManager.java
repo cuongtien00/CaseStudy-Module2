@@ -15,13 +15,13 @@ public class UserManager {
 
     private UserManager() {
     }
-    public UserManager getInstance(){
+    public static UserManager getInstance(){
         if(userManager == null){
             userManager = new UserManager();
         }
         return userManager;
     }
-    public void addNewTop(User user) throws IOException {
+    public void addNewUser(User user) throws IOException {
         userList.add(user);
         useFile.fileWriter(userList);
     }
@@ -33,12 +33,33 @@ public class UserManager {
         }
         return -1;
     }
-    public void removeT(String id) throws IOException {
+    public User findUser(String id){
+        User user = null;
+        for (User a :userList) {
+            if(a.getId().equalsIgnoreCase(id)){
+                user = a;
+                break;
+            }
+        }
+        return user;
+    }
+    public boolean isLogin(User user) {
+        boolean check = false;
+        for (User a : userManager.getUserList()
+        ) {
+            if (a.getId().equalsIgnoreCase(user.getId()) && a.getPassword().equalsIgnoreCase(user.getPassword())) {
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+    public void removeU(String id) throws IOException {
         int index = findById(id);
         userList.remove(index);
         useFile.fileWriter(userList);
     }
-    public void editTop(String id, User user) throws IOException {
+    public void editUser(String id, User user) throws IOException {
         int index = findById(id);
         userList.set(index,user);
         useFile.fileWriter(userList);

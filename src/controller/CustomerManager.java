@@ -77,8 +77,9 @@ public class CustomerManager {
         return null;
     }
     public void showList(){
+        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  ＝＝CUSTOMER-LIST＝＝");
         for (Customer a:customerList) {
-            System.out.println(a);
+            System.out.println("                                                    "+a);
         }
     }
 

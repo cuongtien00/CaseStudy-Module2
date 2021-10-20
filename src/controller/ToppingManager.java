@@ -50,7 +50,7 @@ public class ToppingManager {
         toppingFile.fileWriter(toppings);
     }
     public void showList(){
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  ＝＝TOPPING＝＝");
+        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  ＝＝TOPPING-MENU＝＝");
         for (Topping a:toppings) {
             System.out.println("                                            "+a);
         }

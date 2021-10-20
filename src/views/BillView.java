@@ -16,6 +16,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BillView {
+    private static BillView billView;
+
+    private BillView() {
+    }
+
+    public static BillView getInstance() {
+        if (billView == null) {
+            billView = new BillView();
+        }
+        return billView;
+    }
+
     private static CustomerManager customerManager = CustomerManager.getInstance();
     private static MilkTeaManager milkTeaManager = MilkTeaManager.getInstance();
     private static ToppingManager toppingManager = ToppingManager.getInstance();
@@ -24,127 +36,46 @@ public class BillView {
 
     public void runBillView() {
         Scanner scanner = new Scanner(System.in);
+        try {
+            billManager.setBillList(BillFile.getInstance().fileReader());
+            milkTeaManager.setMilkTeaList(MilkTeaFile.getInstance().fileReader());
+            customerManager.setCustomerList(CustomerFile.getInstance().fileReader());
+            toppingManager.setToppings(ToppingFile.getInstance().fileReader());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         int choice = -1;
         while (choice != 0) {
             showMenu();
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-//                    Customer customer = customerManager.searchC(inputName());
-//                    if (customer != null) {
-//                        Scanner input = new Scanner(System.in);
-//                        System.out.println("Nhap code bill");
-//                        String codeBill = input.nextLine(); //code bill
-//                        Bill bill = new Bill(codeBill, customer);
-//                        billManager.addNewBill(bill);
-//                        billManager.showList();
-//                        break;
-//                    Customer customer = customerManager.searchC(inputName());
-//                    if(customer != null){
-//                        Scanner input = new Scanner(System.in);
-//                        System.out.println("Nhap code bill");
-//                        String codeBill = input.nextLine(); //code bill
-//                        billManager.addNewBill(new Bill(codeBill,customer));
-//                        milkTeaManager.showList();
-//                        System.out.println("Nhap code ");
-//                        String code = scanner.nextLine();
-//                        for (MilkTea a:milkTeaManager.getMilkTeaList()) {
-//                            if(a.getCode().equalsIgnoreCase(code)){
-//                                billManager.
-//                            }
-//                        }
-//
-//                    } else {
-//                        System.out.println("Khong tim thay khach hang");
-//                    }
-
-//                    }
+                    try {
+                        billManager.addNewBill(newBill());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 2:
+                    try {
+                        billManager.editBill(inputCode(), newBill());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3:
+                    try {
+                        billManager.removeBill(inputCode());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 4:
+                    billManager.showList();
+                    break;
+                case 0:
             }
         }
-    }
-
-    public static void main(String[] args) {
-
-        try {
-            customerManager.setCustomerList(CustomerFile.getInstance().fileReader());
-            milkTeaManager.setMilkTeaList(MilkTeaFile.getInstance().fileReader());
-            toppingManager.setToppings(ToppingFile.getInstance().fileReader());
-            billManager.setBillList(BillFile.getInstance().fileReader());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        buyMilkTea();
-    }
-
-    private static void dingTeaMenu() {
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　    　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　  　＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　    　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　。WELCOME。　　　　　　　");
-        milkTeaManager.showList();
-        toppingManager.showList();
-    }
-
-    private static void buyMilkTea() {
-        dingTeaMenu();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Moi ban chon code tra sua");
-        String code = scanner.nextLine();
-        MilkTea milkTea = new MilkTea();
-        for (MilkTea a : milkTeaManager.getMilkTeaList()) {
-            if (a.getCode().equalsIgnoreCase(code)) {
-                milkTea = a;
-            }
-        }
-        Scanner input2 = new Scanner(System.in);
-        System.out.println("Moi chon size ");
-        String size = input2.nextLine();
-        Scanner input3 = new Scanner(System.in);
-        System.out.println("chon so luong");
-        int quantity = input3.nextInt();
-        Scanner input4 = new Scanner(System.in);
-        System.out.println("Chon % duong ");
-        String sugar = input4.nextLine();
-        Scanner input5 = new Scanner(System.in);
-        System.out.println("Chon da");
-        String ice = input5.nextLine();
-        Scanner input6 = new Scanner(System.in);
-        System.out.println("chon id cua topping");
-        String id = input6.nextLine();
-        Topping topping = new Topping();
-        for (Topping a : toppingManager.getToppings()) {
-            if (a.getId().equalsIgnoreCase(id)) {
-                topping = a;
-            }
-        }
-        milkTea.setSize(size);
-        milkTea.setQuantity(quantity);
-        milkTea.setSugar(sugar);
-        milkTea.setIce(ice);
-        milkTea.setTopping(topping);
-        Scanner scanner1 = new Scanner(System.in);
-        Customer customer = new Customer();
-        System.out.println("Moi nhap ten khach hang");
-        String name = scanner1.nextLine();
-        for (Customer a : customerManager.getCustomerList()
-        ) {
-            if (a.getName().equalsIgnoreCase(name)) {
-                customer = a;
-            }
-        }
-        Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Nhap code bill");
-        String codeBill = scanner2.nextLine();
-        Scanner scanner3 = new Scanner(System.in);
-        System.out.println("Nhap ngay ");
-        String date = scanner3.nextLine();
-
-
-        Bill billOfCuong = new Bill(codeBill, customer, date);
-        billOfCuong.addNewMilkTea(milkTea);
-        System.out.println(billOfCuong);
     }
 
     public static String inputName() {
@@ -153,13 +84,20 @@ public class BillView {
         return scanner.nextLine();
     }
 
+    private static String inputCode() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap id: ");
+        return scanner.nextLine();
+
+    }
+
     public static void showMenu() {
         System.out.println("===========BILL-LIST-MANAGER=============");
         System.out.println("1. Xuất Bill: ");
         System.out.println("2. Sửa Bill: ");
         System.out.println("3. Xóa Bill: ");
         System.out.println("4. Hiển thị list Bills: ");
-        System.out.println("6. Exit: ");
+        System.out.println("0. Exit: ");
         System.out.println("Nhập lựa chọn: ");
     }
 
@@ -212,5 +150,6 @@ public class BillView {
         Topping topping = new Topping(code, name, price);
         return topping;
     }
+
 }
 

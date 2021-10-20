@@ -8,8 +8,26 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MilkTeaView {
-    public static void main(String[] args) {
-        MilkTeaManager milkTeaManager = MilkTeaManager.getInstance();
+    private  static MilkTeaView milkTeaView;
+    private static MilkTeaManager milkTeaManager = MilkTeaManager.getInstance();;
+
+    public  MilkTeaManager getMilkTeaManager() {
+        return milkTeaManager;
+    }
+
+    public  void setMilkTeaManager(MilkTeaManager milkTeaManager) {
+        MilkTeaView.milkTeaManager = milkTeaManager;
+    }
+
+    private MilkTeaView(){}
+    public  static MilkTeaView getInstance(){
+        if(milkTeaView == null){
+            milkTeaView = new MilkTeaView();
+        }
+        return milkTeaView;
+        }
+    public void runMilkTeaView(){
+//         milkTeaManager = MilkTeaManager.getInstance();
         Scanner scanner = new Scanner(System.in);
         try {
             milkTeaManager.setMilkTeaList(MilkTeaFile.getInstance().fileReader());

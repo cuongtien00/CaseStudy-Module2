@@ -10,7 +10,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ToppingView {
-    public static void main(String[] args) {
+    private static ToppingView toppingView;
+    private ToppingView(){}
+    public static ToppingView getInstance(){
+        if(toppingView == null){
+            toppingView = new ToppingView();
+        }
+        return toppingView;
+    }
+    public void runToppingView(){
         Scanner scanner = new Scanner(System.in);
         ToppingManager toppingManager = ToppingManager.getInstance();
         try {
@@ -77,7 +85,7 @@ public class ToppingView {
         System.out.println("                                           　　　　      " + "2. Xóa topping: ");
         System.out.println("                                           　　　　      " + "3. Sửa topping: ");
         System.out.println("                                           　　　　      " + "4. Topping Menu: ");
-        System.out.println("                                           　　　　      " + "5. Quay lai ");
+        System.out.println("                                           　　　　      " + "0. Exit ");
     }
 
     private static String inputId() {
