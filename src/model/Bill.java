@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bill implements Serializable {
@@ -8,10 +9,19 @@ public class Bill implements Serializable {
     private String code;
     private Customer customer;
     private String date;
-    private List<MilkTea> milkTeaList;
+    private List<MilkTea> milkTeaList = new ArrayList<>();
 
+    public List<MilkTea> getMilkTeaList() {
+        return milkTeaList;
+    }
+public void addNewMilkTea(MilkTea milkTea){
+        milkTeaList.add(milkTea);
+}
+    public void setMilkTeaList(List<MilkTea> milkTeaList) {
+        this.milkTeaList = milkTeaList;
+    }
 
-    public Bill() {
+    public Bill(String codeBill, Customer customer) {
     }
 
     public Bill(String code, Customer customer, String date) {
@@ -19,6 +29,11 @@ public class Bill implements Serializable {
         this.customer = customer;
         this.date = date;
     }
+public void showListMilkTea(){
+    for (MilkTea a :milkTeaList) {
+        System.out.println(a);
+    }
+}
 
 
     public String getCode() {
@@ -45,13 +60,13 @@ public class Bill implements Serializable {
         this.date = date;
     }
 
-
     @Override
     public String toString() {
-        return "Bill{" +
-                "code='" + code + '\'' +
-                ", customer=" + customer +
-                ", date='" + date + '\'' +
-                '}';
+        return "＝＝＝＝＝＝Bill＝＝＝＝＝＝" +"\n"+
+                "Ngày: " + date + '\n' +
+                "Mã Bill: " + code + '\n' +
+                  customer +"\n"+
+                "Giỏ hàng: " + milkTeaList
+                ;
     }
 }

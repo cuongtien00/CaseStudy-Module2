@@ -41,9 +41,9 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "Khách hàng: " +name
+                + '\n' +
+                "Địa chỉ: " + address;
+
     }
 }

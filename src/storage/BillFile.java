@@ -6,16 +6,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BillReaderWriterFile {
-    private static BillReaderWriterFile billReaderWriterFile;
+public class BillFile {
+    private static BillFile billFile;
 
-    private BillReaderWriterFile() {
+    private BillFile() {
     }
-    public static BillReaderWriterFile getInstance(){
-        if (billReaderWriterFile == null){
-            billReaderWriterFile = new BillReaderWriterFile();
+    public static BillFile getInstance(){
+        if (billFile == null){
+            billFile = new BillFile();
         }
-        return billReaderWriterFile;
+        return billFile;
     }
 
     public List<Bill> fileReader() throws IOException, ClassNotFoundException {

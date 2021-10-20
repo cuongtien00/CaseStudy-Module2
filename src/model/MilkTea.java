@@ -99,10 +99,8 @@ public class MilkTea implements Serializable {
 
     @Override
     public String toString() {
-        return "MilkTea{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return name +", code: " + code + ", giá: "+price+", Size: " + size +  ", Số lượng: " + quantity + ", Đường: " + sugar +"%" + ", Đá: " + ice + "%" +", "+ ", topping: "+topping;
+
+
     }
 }

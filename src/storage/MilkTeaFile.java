@@ -6,16 +6,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MilkTeaReaderWriterFile {
-    private static MilkTeaReaderWriterFile milkTeaReaderWriterFile;
+public class MilkTeaFile {
+    private static MilkTeaFile milkTeaFile;
 
-    private MilkTeaReaderWriterFile() {
+    private MilkTeaFile() {
     }
-    public static MilkTeaReaderWriterFile getInstance(){
-        if(milkTeaReaderWriterFile == null){
-            milkTeaReaderWriterFile = new MilkTeaReaderWriterFile();
+    public static MilkTeaFile getInstance(){
+        if(milkTeaFile == null){
+            milkTeaFile = new MilkTeaFile();
         }
-        return milkTeaReaderWriterFile;
+        return milkTeaFile;
     }
     public List<MilkTea> fileReader() throws IOException, ClassNotFoundException {
         File file = new File("milktealist.dat");

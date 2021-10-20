@@ -6,14 +6,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToppingReaderWriterFile {
-    private static ToppingReaderWriterFile toppingReaderWriterFile;
-    private ToppingReaderWriterFile(){}
-    public static ToppingReaderWriterFile getInstance(){
-        if(toppingReaderWriterFile == null){
-            toppingReaderWriterFile = new ToppingReaderWriterFile();
+public class ToppingFile {
+    private static ToppingFile toppingFile;
+    private ToppingFile(){}
+    public static ToppingFile getInstance(){
+        if(toppingFile == null){
+            toppingFile = new ToppingFile();
         }
-        return toppingReaderWriterFile;
+        return toppingFile;
     }
     public List<Topping> fileReader() throws IOException, ClassNotFoundException {
         File file = new File("toppinglist.dat");
@@ -36,7 +36,7 @@ public class ToppingReaderWriterFile {
         FileOutputStream os = new FileOutputStream("toppinglist.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
 
-        oos = new ObjectOutputStream(os);
+        oos.writeObject(toppings);
         oos.close();
         os.close();
     }

@@ -1,16 +1,27 @@
 package controller;
 
 import model.Bill;
-import storage.BillReaderWriterFile;
+import storage.BillFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillManager {
-    private List<Bill> billList;
-    private BillReaderWriterFile billReaderWriterFile;
+    private static  BillManager billManager ;
+    private List<Bill> billList = new ArrayList<>();
+    private BillFile billFile = BillFile.getInstance();
+    private CustomerManager customerManager = CustomerManager.getInstance();
+    private MilkTeaManager milkTeaManager = MilkTeaManager.getInstance();
+    private ToppingManager toppingManager = ToppingManager.getInstance();
 
-    public BillManager() {
+    private BillManager() {
+    }
+    public static BillManager getInstance(){
+        if(billManager ==null){
+            billManager = new BillManager();
+        }
+        return billManager;
     }
 
     public BillManager(List<Bill> billList) {
@@ -22,15 +33,25 @@ public class BillManager {
     }
     public void addNewBill(Bill bill) throws IOException {
         billList.add(bill);
-        billReaderWriterFile.fileWriter(billList);
+        billFile.fileWriter(billList);
     }
-    public void editBill(int index, Bill bill) throws IOException {
+    public int findByCode(String code){
+        for (Bill a : billList) {
+            if(a.getCode().equalsIgnoreCase(code)){
+                return billList.indexOf(a);
+            }
+        }
+        return -1;
+    }
+    public void editBill(String code, Bill bill) throws IOException {
+        int index = findByCode(code);
         billList.set(index, bill);
-        billReaderWriterFile.fileWriter(billList);
+        billFile.fileWriter(billList);
     }
-    public void removeBill(Bill bill) throws IOException {
-        billList.remove(bill);
-        billReaderWriterFile.fileWriter(billList);
+    public void removeBill(String code) throws IOException {
+        int index = findByCode(code);
+        billList.remove(index);
+        billFile.fileWriter(billList);
     }
 
     public void setBillList(List<Bill> billList) {

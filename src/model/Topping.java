@@ -42,10 +42,6 @@ public class Topping implements Serializable {
 
     @Override
     public String toString() {
-        return "Topping{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return "Topping: "  + "id: " + id +", "+ name +   ", giá: " + price;
     }
 }

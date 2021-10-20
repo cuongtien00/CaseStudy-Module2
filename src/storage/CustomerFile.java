@@ -1,20 +1,19 @@
 package storage;
 
 import model.Customer;
-import model.MilkTea;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerReaderWriterFile {
-    private static CustomerReaderWriterFile customerReaderWriterFile;
-    private CustomerReaderWriterFile(){}
-    public static CustomerReaderWriterFile getInstance(){
-        if (customerReaderWriterFile == null){
-            customerReaderWriterFile = new CustomerReaderWriterFile();
+public class CustomerFile {
+    private static CustomerFile customerFile;
+    private CustomerFile(){}
+    public static CustomerFile getInstance(){
+        if (customerFile == null){
+            customerFile = new CustomerFile();
         }
-        return customerReaderWriterFile;
+        return customerFile;
     }
 
     public List<Customer> fileReader() throws IOException, ClassNotFoundException {

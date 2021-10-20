@@ -1,7 +1,7 @@
 package controller;
 
 import model.Customer;
-import storage.CustomerReaderWriterFile;
+import storage.CustomerFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomerManager {
     private static CustomerManager customerManager;
     private List<Customer> customerList = new ArrayList<>();
-    private CustomerReaderWriterFile customerReaderWriterFile;
+    private CustomerFile customerFile = CustomerFile.getInstance();
 
     private CustomerManager() {
     }
@@ -37,35 +37,44 @@ public class CustomerManager {
         CustomerManager.customerManager = customerManager;
     }
 
-    public CustomerReaderWriterFile getCustomerReaderWriterFile() {
-        return customerReaderWriterFile;
+    public CustomerFile getCustomerReaderWriterFile() {
+        return customerFile;
     }
 
     public CustomerManager(List<Customer> customerList) {
         this.customerList = customerList;
     }
 
-    public CustomerManager(CustomerReaderWriterFile customerReaderWriterFile) {
-        this.customerReaderWriterFile= customerReaderWriterFile;
+    public CustomerManager(CustomerFile customerFile) {
+        this.customerFile = customerFile;
     }
 
-    public void setCustomerReaderWriterFile(CustomerReaderWriterFile customerReaderWriterFile) {
-        this.customerReaderWriterFile = customerReaderWriterFile;
+    public void setCustomerReaderWriterFile(CustomerFile customerFile) {
+        this.customerFile = customerFile;
     }
 
-    public void addNewC(Customer customer) {
+    public void addNewC(Customer customer) throws IOException {
         customerList.add(customer);
-//        customerReaderWriterFile.fileWriter(customerList);
+        customerFile.fileWriter(customerList);
     }
-    public void removeC(String name) {
+    public void removeC(String name) throws IOException {
         int index = findByName(name);
         customerList.remove(index);
-//        customerReaderWriterFile.fileWriter(customerList);
+        customerFile.fileWriter(customerList);
     }
-    public void editC(String name, Customer customer) {
+    public void editC(String name, Customer customer) throws IOException {
         int index = findByName(name);
         customerList.set(index,customer);
-//        customerReaderWriterFile.fileWriter(customerList);
+        customerFile.fileWriter(customerList);
+    }
+    public Customer searchC(String name){
+        for (Customer a :customerList
+             ) {
+            if(a.getName().equalsIgnoreCase(name)){
+                return a;
+            }
+        }
+        return null;
     }
     public void showList(){
         for (Customer a:customerList) {

@@ -1,7 +1,7 @@
 package controller;
 
 import model.MilkTea;
-import storage.MilkTeaReaderWriterFile;
+import storage.MilkTeaFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class MilkTeaManager {
     private static MilkTeaManager milkTeaManager;
     private static List<MilkTea> milkTeaList= new ArrayList<>();
-    private  MilkTeaReaderWriterFile milkTeaReaderWriterFile;
+    private MilkTeaFile milkTeaFile = MilkTeaFile.getInstance();
 
     private MilkTeaManager(){}
     public static MilkTeaManager getInstance(){
@@ -27,12 +27,12 @@ public class MilkTeaManager {
         MilkTeaManager.milkTeaManager = milkTeaManager;
     }
 
-    public MilkTeaReaderWriterFile getMilkTeaReaderWriterFile() {
-        return milkTeaReaderWriterFile;
+    public MilkTeaFile getMilkTeaReaderWriterFile() {
+        return milkTeaFile;
     }
 
-    public void setMilkTeaReaderWriterFile(MilkTeaReaderWriterFile milkTeaReaderWriterFile) {
-        this.milkTeaReaderWriterFile = milkTeaReaderWriterFile;
+    public void setMilkTeaReaderWriterFile(MilkTeaFile milkTeaFile) {
+        this.milkTeaFile = milkTeaFile;
     }
 
 
@@ -46,26 +46,27 @@ public class MilkTeaManager {
     }
 
 
-    public void addNewMilkTea(MilkTea milkTea) {
+    public void addNewMilkTea(MilkTea milkTea) throws IOException {
         milkTeaList.add(milkTea);
-//        milkTeaReaderWriterFile.fileWriter(milkTeaList);
+        milkTeaFile.fileWriter(milkTeaList);
     }
-    public void removeMilkTea(String code) {
+    public void removeMilkTea(String code) throws IOException {
         int index = findByCode(code);
         milkTeaList.remove(index);
-//        milkTeaReaderWriterFile.fileWriter(milkTeaList);
+        milkTeaFile.fileWriter(milkTeaList);
     }
-    public void editMilkTeaList(String code, MilkTea milkTea)  {
+    public void editMilkTeaList(String code, MilkTea milkTea) throws IOException {
         int index = findByCode(code);
         milkTeaList.set(index,milkTea);
-//        milkTeaReaderWriterFile.fileWriter(milkTeaList);
+        milkTeaFile.fileWriter(milkTeaList);
     }
     public int getBestSeller(){
         return 1;
     };
     public void showList(){
+        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　＝＝TEA＝＝");
         for (MilkTea a:milkTeaList) {
-            System.out.println(a);
+            System.out.println("                  "+a);
         }
     }
 
