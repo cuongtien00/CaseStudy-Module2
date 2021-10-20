@@ -41,14 +41,16 @@ private AdminView(){}
         }
     }
     public static void showMenu(){
-        System.out.println("                                       　      　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                       　      ＝＝＝＝＝＝HỆ THỐNG QUẢN LÝ CỬA HÀNG＝＝＝＝＝＝");
-        System.out.println("                                       　      　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　1. Quản lý danh sách topping");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　2. Quản lý danh sách trà sữa");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　3. Quản lý danh sách khách hàng");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　4. Quản lý danh sách bill");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　0. Exit");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　Nhập lựa chọn");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                         " + "＝＝＝＝＝＝HỆ THỐNG QUẢN LÝ CỬA HÀNG＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                           　　　　                     " +"1. Quản lý danh sách topping");
+        System.out.println("                                           　　　　                     " +"2. Quản lý danh sách trà sữa");
+        System.out.println("                                           　　　　                     " +"3. Quản lý danh sách khách hàng");
+        System.out.println("                                           　　　　                     " +"4. Quản lý danh sách bill");
+        System.out.println("                                           　　　　                     " +"0. Exit");
+        System.out.println("                                           　　　　                     " +"Nhập lựa chọn");
+        System.out.println("          ");
     }
+
 }

@@ -2,6 +2,8 @@ package views;
 
 import controller.UserManager;
 import model.User;
+import regex.AccountExample;
+import regex.PasswordExample;
 import storage.UseFile;
 
 import java.io.IOException;
@@ -31,12 +33,28 @@ public class UserView {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
+                    User user = creatUser();
+                    boolean check = checkPassword(user);
+
+                    while (!check){
+                        Scanner scanner1 = new Scanner(System.in);
+                        System.out.println("Nhap lai mat khau");
+                        System.out.println("(Mật khẩu ít nhất 8 ký tự, chữ cái đầu viết hoa và không có ký tự đặc biệt)");
+                        String fixPassword = scanner1.nextLine();
+                        user.setPassword(fixPassword);
+                        check =checkPassword(user);
+                    }
+                    Scanner scanner3 = new Scanner(System.in);
+                    System.out.println("Client or Admin ? ");
+                    String role = scanner3.nextLine();
+                    user.setRole(role);
+                    System.out.println(user);
                     try {
-                        userManager.addNewUser(creatUser());
-                        System.out.println("Đăng ký thành công!");
+                        userManager.addNewUser(user);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    System.out.println("Đăng ký thành công!");
                     break;
                 case 2:
                     login();
@@ -57,11 +75,14 @@ public class UserView {
     }
 
     public void login() {
-        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Nhập ID: ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("｜ID｜");
         String id = scanner.nextLine();
         Scanner scanner2 = new Scanner(System.in);
         System.out.println("Nhập Password: ");
+        System.out.print("｜Password｜");
         String password = scanner2.nextLine();
         User user = new User(id, password);
         boolean isLogin = userManager.isLogin(user);
@@ -80,26 +101,40 @@ public class UserView {
 
     }
 
-    private static User creatUser() {
-        Scanner scanner1 = new Scanner(System.in);
+    public  User creatUser() {
+
+
         System.out.println("Đăng ký tài khoản");
         System.out.println("Nhập ID: ");
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.print("｜ID｜");
         String id = scanner1.nextLine();
+
+        System.out.println("");
         System.out.println("Nhập Password: ");
         Scanner scanner2 = new Scanner(System.in);
+        System.out.print("｜Password｜");
+
         String password = scanner2.nextLine();
-        Scanner scanner3 = new Scanner(System.in);
-        System.out.println("Client or Admin ? ");
-        String role = scanner3.nextLine();
-        return new User(id, password, role);
-    }
+        return new User(id, password);
+
+        }
+        public boolean checkPassword(User user){
+            PasswordExample passwordExample = new PasswordExample();
+            return passwordExample.validatePassword(user.getPassword());
+        }
+
+
+
 
 
     public static void showMenu() {
-        System.out.println("                                       　      " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                             " + "＝＝＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝＝＝");
-        System.out.println("                                       　      " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                           　　　　 " + " ①【Đăng ký】 " + "②【Đăng nhập】");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                            " + "＝＝＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                           　　　　               " +" ①【Đăng ký】 " + "②【Đăng nhập】");
+        System.out.println("          ");
 
     }
+
 }

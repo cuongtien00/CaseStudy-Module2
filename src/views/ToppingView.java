@@ -11,13 +11,16 @@ import java.util.Scanner;
 
 public class ToppingView {
     private static ToppingView toppingView;
+
     private ToppingView(){}
+
     public static ToppingView getInstance(){
         if(toppingView == null){
             toppingView = new ToppingView();
         }
         return toppingView;
     }
+
     public void runToppingView(){
         Scanner scanner = new Scanner(System.in);
         ToppingManager toppingManager = ToppingManager.getInstance();
@@ -78,14 +81,15 @@ public class ToppingView {
     }
 
     private static void showMenu() {
-        System.out.println("                                       　      " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                             " + "＝＝＝＝＝＝TOPPING-LIST-MANAGER＝＝＝＝＝＝");
-        System.out.println("                                       　      " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                           　　　　      " + "1. Thêm mới topping: ");
-        System.out.println("                                           　　　　      " + "2. Xóa topping: ");
-        System.out.println("                                           　　　　      " + "3. Sửa topping: ");
-        System.out.println("                                           　　　　      " + "4. Topping Menu: ");
-        System.out.println("                                           　　　　      " + "0. Exit ");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                            " + "＝＝＝＝＝＝TOPPING_LIST-MANAGER＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                           　　　　                     " +"1. Thêm mới topping : ");
+        System.out.println("                                           　　　　                     " +"2. Xóa topping : ");
+        System.out.println("                                           　　　　                     " +"3. Sửa toppping : ");
+        System.out.println("                                           　　　　                     " +"4. Topping Menu: ");
+        System.out.println("                                           　　　　                     " +"0. Exit ");
+        System.out.println("          ");
     }
 
     private static String inputId() {

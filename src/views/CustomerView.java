@@ -78,13 +78,14 @@ public class CustomerView {
         return new Customer(name,add);
     }
     private static void showMenu(){
-        System.out.println("                                       　      " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                             " + "＝＝＝＝＝＝CUSTOMER_LIST-MANAGER＝＝＝＝＝＝");
-        System.out.println("                                       　      " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                           　　　　      " +"1. Thêm mới customer: ");
-        System.out.println("                                           　　　　      " +"2. Xóa customer: ");
-        System.out.println("                                           　　　　      " +"3. Sửa customer: ");
-        System.out.println("                                           　　　　      " +"4. Customer Menu: ");
-        System.out.println("                                           　　　　      " +"0. Exit: ");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                            " + "＝＝＝＝＝＝CUSTOMER_LIST-MANAGER＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                           　　　　                     " +"1. Thêm mới customer : ");
+        System.out.println("                                           　　　　                     " +"2. Xóa customer : ");
+        System.out.println("                                           　　　　                     " +"3. Sửa customer : ");
+        System.out.println("                                           　　　　                     " +"4. Customer Menu: ");
+        System.out.println("                                           　　　　                     " +"0. Exit ");
+        System.out.println("          ");
     }
 }

@@ -51,37 +51,24 @@ public class BillView {
             switch (choice) {
                 case 1:
                     try {
-                        billManager.addNewBill(newBill());
+                        billManager.editBill(inputCode(), newBill());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     break;
                 case 2:
                     try {
-                        billManager.editBill(inputCode(), newBill());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case 3:
-                    try {
                         billManager.removeBill(inputCode());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     break;
-                case 4:
+                case 3:
                     billManager.showList();
                     break;
                 case 0:
             }
         }
-    }
-
-    public static String inputName() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap ten:");
-        return scanner.nextLine();
     }
 
     private static String inputCode() {
@@ -91,14 +78,16 @@ public class BillView {
 
     }
 
+
     public static void showMenu() {
-        System.out.println("===========BILL-LIST-MANAGER=============");
-        System.out.println("1. Xuất Bill: ");
-        System.out.println("2. Sửa Bill: ");
-        System.out.println("3. Xóa Bill: ");
-        System.out.println("4. Hiển thị list Bills: ");
-        System.out.println("0. Exit: ");
-        System.out.println("Nhập lựa chọn: ");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                            " + "＝＝＝＝＝＝BILL_LIST-MANAGER＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                           　　　　                     " +"1. Sửa bill : ");
+        System.out.println("                                           　　　　                     " +"2. Xóa bill : ");
+        System.out.println("                                           　　　　                     " +"3. Bill Menu: ");
+        System.out.println("                                           　　　　                     " +"0. Exit ");
+        System.out.println("          ");
     }
 
     private static Bill newBill() {
@@ -109,22 +98,10 @@ public class BillView {
         System.out.println("Nhập ngày xuất Bill: ");
         String date = input2.nextLine();
         Customer customer = newCustomer();
-//        MilkTea milkTea = newMilkTea();
         return new Bill(code, customer, date);
 
     }
 
-    private static MilkTea newMilkTea() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Moi nhap code: ");
-        String code = input.nextLine();
-        System.out.println("Mời nhập loại trà sữa: ");
-        String name = input.nextLine();
-        Scanner input2 = new Scanner(System.in);
-        System.out.println("Moi nhap gia");
-        double price = input2.nextDouble();
-        return new MilkTea(code, name, price);
-    }
 
     private static Customer newCustomer() {
         Scanner input = new Scanner(System.in);
@@ -135,21 +112,5 @@ public class BillView {
         Customer customer = new Customer(name, add);
         return customer;
     }
-
-
-    private static Topping newTopping() {
-        Scanner input2 = new Scanner(System.in);
-        System.out.println("Nhập code: ");
-        String code = input2.nextLine();
-        Scanner input = new Scanner(System.in);
-        System.out.println("Nhập tên topping: ");
-        String name = input.nextLine();
-        Scanner input1 = new Scanner(System.in);
-        System.out.println("Nhập giá: ");
-        double price = input1.nextDouble();
-        Topping topping = new Topping(code, name, price);
-        return topping;
-    }
-
 }
 

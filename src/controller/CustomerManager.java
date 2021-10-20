@@ -77,10 +77,12 @@ public class CustomerManager {
         return null;
     }
     public void showList(){
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  ＝＝CUSTOMER-LIST＝＝");
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――DANH SÁCH KHÁCH HÀNG――――――――――――――――――――――――――――――――――――――――――――――――");
         for (Customer a:customerList) {
-            System.out.println("                                                    "+a);
+            System.out.println("                                                                 "+a);
         }
+        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――～⊝～⊝～⊝～―――――――――――――――――――――――――――――――――――――――――――――――――――");
+
     }
 
     public List<Customer> getCustomerList() {

@@ -65,10 +65,12 @@ public class UserManager {
         useFile.fileWriter(userList);
     }
     public void showList(){
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   ＝＝USER＝＝");
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――DANH SÁCH TÀI KHOẢN―――――――――――――――――――――――――――――――――――――――――――――――");
         for (User a:userList) {
             System.out.println("                                            "+a);
         }
+        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――～⊝～⊝～⊝～―――――――――――――――――――――――――――――――――――――――――――――――――");
+
     }
 
     public static UserManager getUserManager() {

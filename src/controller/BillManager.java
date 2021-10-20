@@ -58,10 +58,12 @@ public class BillManager {
         this.billList = billList;
     }
     public void showList(){
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   ＝＝BILL-LIST＝＝");
+        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――DANH SÁCH HÓA ĐƠN――――――――――――――――――――――――――――――――――――――――――――――――");
         for (Bill a: billList) {
             System.out.println("                                          "+a);
         }
+        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――～⊝～⊝～⊝～―――――――――――――――――――――――――――――――――――――――――――――――――――");
+
     }
 
 }
