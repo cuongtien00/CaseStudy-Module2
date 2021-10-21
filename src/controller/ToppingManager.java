@@ -10,7 +10,7 @@ import java.util.List;
 public class ToppingManager {
     private static ToppingManager toppingManager;
     private  List<Topping>toppings = new ArrayList<>();
-    private ToppingFile toppingFile = ToppingFile.getInstance();
+    private static ToppingFile toppingFile = ToppingFile.getInstance();
     private ToppingManager(){};
     public static ToppingManager getInstance(){
         if(toppingManager == null){
@@ -52,7 +52,7 @@ public class ToppingManager {
     public void showList(){
         System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――TOPPING-MENU――――――――――――――――――――――――――――――――――――――――――――――――");
         for (Topping a:toppings) {
-            System.out.println("                                            　　　　　  "+a);
+            System.out.println("                                            　　　　　        "+a);
         }
         System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――～⊝～⊝～⊝～――――――――――――――――――――――――――――――――――――――――――――――――");
 

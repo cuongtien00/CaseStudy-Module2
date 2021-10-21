@@ -25,17 +25,19 @@ public class ClientView {
     private static MilkTeaManager milkTeaManager = MilkTeaManager.getInstance();
     private static ToppingManager toppingManager = ToppingManager.getInstance();
     private static BillManager billManager = BillManager.getInstance();
+    private static List<MilkTea> milkTeaList = new ArrayList<>();
 
     private ClientView() {
     }
-    public static ClientView getInstance(){
-        if(clientView==null){
+
+    public static ClientView getInstance() {
+        if (clientView == null) {
             clientView = new ClientView();
         }
         return clientView;
     }
 
-    public  void runClientView(){
+    public void runClientView() {
         try {
             customerManager.setCustomerList(CustomerFile.getInstance().fileReader());
             milkTeaManager.setMilkTeaList(MilkTeaFile.getInstance().fileReader());
@@ -56,7 +58,7 @@ public class ClientView {
                     dingTeaMenu();
                     break;
                 case 2:
-buyMilkTea();
+                    buyMilkTea();
                     break;
                 case 3:
                     billManager.showList();
@@ -68,92 +70,36 @@ buyMilkTea();
     }
 
     public static void showMenu() {
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　    　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　  　＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　    　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　。WELCOME。　　　　　　　");
-        System.out.println("                                                    1. Hiển thị Menu");
-        System.out.println("                                                    2. Mua trà sữa");
-        System.out.println("                                                    3. Xuất bill");
-        System.out.println("                                                       Nhập lựa chọn:");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                         　　" + "＝＝＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                           　　　　                     " + "1. Hiển thị Menu");
+        System.out.println("                                           　　　　                     " + "2. Mua trà sữa");
+        System.out.println("                                           　　　　                     " + "3. Xuất bill");
+        System.out.println("                                           　　　　                     " + "0. Exit");
+        System.out.println("                                           　　　　                     " + "Nhập lựa chọn: ");
     }
+
     private static void dingTeaMenu() {
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　    　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　  　＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　    　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　。WELCOME。　　　　　　　");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("                                                         　　" + "＝＝＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝＝＝");
+        System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
+        System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　。WELCOME。　　　　　　　");
         milkTeaManager.showList();
         toppingManager.showList();
     }
+
     private static void buyMilkTea() {
         dingTeaMenu();
-        List<MilkTea> milkTeaList = new ArrayList<>();
         Bill bill = new Bill();
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Mua may loai?");
-        int num = input.nextInt();
-
-        for (int i = 0; i < num; i++) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Moi ban chon code tra sua");
-            String code = scanner.nextLine();
-            MilkTea milkTea = new MilkTea();
-            for (MilkTea a : milkTeaManager.getMilkTeaList()) {
-                if (a.getCode().equalsIgnoreCase(code)) {
-                    milkTea = a;
-                }
-            }
-            Scanner input2 = new Scanner(System.in);
-            System.out.println("Moi chon size ");
-            String size = input2.nextLine();
-            Scanner input3 = new Scanner(System.in);
-            System.out.println("chon so luong");
-            int quantity = input3.nextInt();
-            Scanner input4 = new Scanner(System.in);
-            System.out.println("Chon % duong ");
-            String sugar = input4.nextLine();
-            Scanner input5 = new Scanner(System.in);
-            System.out.println("Chon da");
-            String ice = input5.nextLine();
-            Scanner input6 = new Scanner(System.in);
-            System.out.println("chon id cua topping");
-            String id = input6.nextLine();
-            Topping topping = new Topping();
-            for (Topping a : toppingManager.getToppings()) {
-                if (a.getId().equalsIgnoreCase(id)) {
-                    topping = a;
-                }
-            }
-            milkTea.setSize(size);
-            milkTea.setQuantity(quantity);
-            milkTea.setSugar(sugar);
-            milkTea.setIce(ice);
-            milkTea.setTopping(topping);
-            milkTeaList.add(milkTea);
-
-        }
+        selectType();
         bill.setMilkTeaList(milkTeaList);
-        Scanner scanner1 = new Scanner(System.in);
-        Customer customer = new Customer();
-        System.out.println("Moi nhap ten khach hang");
-        String name = scanner1.nextLine();
-        for (Customer a : customerManager.getCustomerList()
-        ) {
-            if (a.getName().equalsIgnoreCase(name)) {
-                customer = a;
-            }
-        }
+        Customer customer = findCustomer();
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Nhap code bill");
+        System.out.println("Nhập code bill");
         String codeBill = scanner2.nextLine();
-        Scanner scanner3 = new Scanner(System.in);
-        System.out.println("Nhap ngay ");
-        String date = scanner3.nextLine();
-
-
         bill.setCode(codeBill);
-        bill.setDate(date);
         bill.setCustomer(customer);
 
         try {
@@ -163,5 +109,72 @@ buyMilkTea();
         }
     }
 
+    private static Customer findCustomer() {
+        Scanner scanner1 = new Scanner(System.in);
+        Customer customer = new Customer();
+        System.out.println("Mời nhập tên khách hàng: ");
+        String name = scanner1.nextLine();
+        for (Customer a : customerManager.getCustomerList()
+        ) {
+            if (a.getName().equalsIgnoreCase(name)) {
+                customer = a;
+            }
+        }
+        return customer;
     }
+
+    private static void selectType() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Bạn mua mấy loại trà sữa?");
+        int num = input.nextInt();
+
+        for (int i = 0; i < num; i++) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Mời nhập code trà sữa: ");
+            String code = scanner.nextLine();
+            MilkTea milkTea = new MilkTea();
+            for (MilkTea a : milkTeaManager.getMilkTeaList()) {
+                if (a.getCode().equalsIgnoreCase(code)) {
+                    milkTea = a;
+                }
+            }
+            Scanner input2 = new Scanner(System.in);
+            System.out.println("Mời chọn size: ");
+            String size = input2.nextLine();
+            Scanner input3 = new Scanner(System.in);
+            System.out.println("Chọn số lượng: ");
+            int quantity = input3.nextInt();
+            Scanner input4 = new Scanner(System.in);
+            System.out.println("Phần trăm đường: ");
+            String sugar = input4.nextLine();
+            Scanner input5 = new Scanner(System.in);
+            System.out.println("Phần trăm đá: ");
+            String ice = input5.nextLine();
+            Scanner input6 = new Scanner(System.in);
+
+
+            System.out.println("Mời nhập id topping muốn thêm: ");
+            String id = input6.nextLine();
+            int idInt = Integer.parseInt(id);
+            Topping topping = new Topping();
+            if(idInt!=0){
+                for (Topping a : toppingManager.getToppings()) {
+                    if (a.getId().equalsIgnoreCase(id)) {
+                        topping = a;
+                    }
+                }
+            }
+
+
+            milkTea.setSize(size);
+            milkTea.setQuantity(quantity);
+            milkTea.setSugar(sugar);
+            milkTea.setIce(ice);
+            milkTea.setTopping(topping);
+            milkTeaList.add(milkTea);
+
+        }
+    }
+
+}
 

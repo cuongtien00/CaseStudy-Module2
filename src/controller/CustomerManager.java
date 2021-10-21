@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomerManager {
     private static CustomerManager customerManager;
     private List<Customer> customerList = new ArrayList<>();
-    private CustomerFile customerFile = CustomerFile.getInstance();
+    private  static CustomerFile customerFile = CustomerFile.getInstance();
 
     private CustomerManager() {
     }

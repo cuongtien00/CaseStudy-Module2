@@ -10,7 +10,7 @@ import java.util.List;
 public class MilkTeaManager {
     private static MilkTeaManager milkTeaManager;
     private static List<MilkTea> milkTeaList= new ArrayList<>();
-    private MilkTeaFile milkTeaFile = MilkTeaFile.getInstance();
+    private static MilkTeaFile milkTeaFile = MilkTeaFile.getInstance();
 
     private MilkTeaManager(){}
     public static MilkTeaManager getInstance(){

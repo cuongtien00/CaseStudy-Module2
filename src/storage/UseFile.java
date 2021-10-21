@@ -37,7 +37,6 @@ public class UseFile {
     public void fileWriter(List<User> userList) throws IOException {
         FileOutputStream os = new FileOutputStream("user.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
-
         oos.writeObject(userList);
         oos.close();
         os.close();

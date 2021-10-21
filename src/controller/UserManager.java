@@ -11,13 +11,20 @@ import java.util.List;
 public class UserManager {
     private static UserManager userManager;
     private List<User>userList = new ArrayList<>();
-    private UseFile useFile = UseFile.getInstance();
+    private static UseFile useFile = UseFile.getInstance();
 
     private UserManager() {
     }
     public static UserManager getInstance(){
         if(userManager == null){
             userManager = new UserManager();
+            try {
+                userManager.setUserList(useFile.fileReader());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return userManager;
     }

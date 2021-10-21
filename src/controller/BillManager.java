@@ -10,7 +10,7 @@ import java.util.List;
 public class BillManager {
     private static  BillManager billManager ;
     private List<Bill> billList = new ArrayList<>();
-    private BillFile billFile = BillFile.getInstance();
+    private static BillFile billFile = BillFile.getInstance();
     private CustomerManager customerManager = CustomerManager.getInstance();
     private MilkTeaManager milkTeaManager = MilkTeaManager.getInstance();
     private ToppingManager toppingManager = ToppingManager.getInstance();

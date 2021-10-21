@@ -14,19 +14,11 @@ public class UserView {
     private static AdminView adminView = AdminView.getInstance();
 
     private static final String ADMIN = "admin";
-    private static final String CLIENT = "client";
     private static UserManager userManager = UserManager.getInstance();
 
     public void runUserView() {
         Scanner scanner = new Scanner(System.in);
         insertAdminId();
-        try {
-            userManager.setUserList(UseFile.getInstance().fileReader());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         int choice = -1;
         while (choice != 0) {
             showMenu();
@@ -38,7 +30,7 @@ public class UserView {
 
                     while (!check){
                         Scanner scanner1 = new Scanner(System.in);
-                        System.out.println("Nhap lai mat khau");
+                        System.out.println("Nhập lại mật khẩu!");
                         System.out.println("(Mật khẩu ít nhất 8 ký tự, chữ cái đầu viết hoa và không có ký tự đặc biệt)");
                         String fixPassword = scanner1.nextLine();
                         user.setPassword(fixPassword);

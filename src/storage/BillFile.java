@@ -41,8 +41,7 @@ public class BillFile {
     public void fileWriter(List<Bill> bills) throws IOException {
         FileOutputStream os = new FileOutputStream("billlist.dat");
         ObjectOutputStream oos = new ObjectOutputStream(os);
-
-        oos = new ObjectOutputStream(os);
+        oos.writeObject(bills);
         oos.close();
         os.close();
     }

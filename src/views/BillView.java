@@ -73,7 +73,7 @@ public class BillView {
 
     private static String inputCode() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap id: ");
+        System.out.println("Nhập id: ");
         return scanner.nextLine();
 
     }
@@ -94,11 +94,11 @@ public class BillView {
         Scanner input1 = new Scanner(System.in);
         System.out.println("Nhập billCode: ");
         String code = input1.nextLine();
-        Scanner input2 = new Scanner(System.in);
-        System.out.println("Nhập ngày xuất Bill: ");
-        String date = input2.nextLine();
         Customer customer = newCustomer();
-        return new Bill(code, customer, date);
+        Scanner input2 = new Scanner(System.in);
+        System.out.println("Mời nhập ngày: ");
+        String date = input2.nextLine();
+        return new Bill(code, customer,date);
 
     }
 
