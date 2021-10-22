@@ -55,12 +55,19 @@ public class ClientView {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    dingTeaMenu();
+                    try {
+                        customerManager.addNewC(newCustomer());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 2:
-                    buyMilkTea();
+                    dingTeaMenu();
                     break;
                 case 3:
+                    buyMilkTea();
+                    break;
+                case 4:
                     billManager.showList();
                     break;
                 case 0:
@@ -73,9 +80,10 @@ public class ClientView {
         System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
         System.out.println("                                                         　　" + "＝＝＝＝＝＝＝。DINGTEA　募茶。＝＝＝＝＝＝＝");
         System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
-        System.out.println("                                           　　　　                     " + "1. Hiển thị Menu");
-        System.out.println("                                           　　　　                     " + "2. Mua trà sữa");
-        System.out.println("                                           　　　　                     " + "3. Xuất bill");
+        System.out.println("                                           　　　　                     " + "1. Thêm mới khách hàng");
+        System.out.println("                                           　　　　                     " + "2. Hiển thị Menu");
+        System.out.println("                                           　　　　                     " + "3. Mua trà sữa");
+        System.out.println("                                           　　　　                     " + "4. Xuất bill");
         System.out.println("                                           　　　　                     " + "0. Exit");
         System.out.println("                                           　　　　                     " + "Nhập lựa chọn: ");
     }
@@ -112,11 +120,11 @@ public class ClientView {
     private static Customer findCustomer() {
         Scanner scanner1 = new Scanner(System.in);
         Customer customer = new Customer();
-        System.out.println("Mời nhập tên khách hàng: ");
-        String name = scanner1.nextLine();
+        System.out.println("Mời nhập id khách hàng: ");
+        String id = scanner1.nextLine();
         for (Customer a : customerManager.getCustomerList()
         ) {
-            if (a.getName().equalsIgnoreCase(name)) {
+            if (a.getId().equalsIgnoreCase(id)) {
                 customer = a;
             }
         }
@@ -179,6 +187,17 @@ public class ClientView {
 
         }
 
+    }
+    private static Customer newCustomer(){
+        Scanner scanner1= new Scanner(System.in);
+        System.out.println("Nhập id khách hàng: ");
+        String id = scanner1.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập tên: ");
+        String name = scanner.nextLine();
+        System.out.println("Nhập địa chỉ: ");
+        String add = scanner.nextLine();
+        return new Customer(id,name,add);
     }
 
 }

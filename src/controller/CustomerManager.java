@@ -20,9 +20,9 @@ public class CustomerManager {
         }
         return customerManager;
     }
-    public int findByName(String name){
+    public int findById(String id){
         for (Customer a:customerList) {
-            if(a.getName().equalsIgnoreCase(name)){
+            if(a.getId().equalsIgnoreCase(id)){
               return customerList.indexOf(a);
             }
         }
@@ -57,20 +57,20 @@ public class CustomerManager {
         customerList.add(customer);
         customerFile.fileWriter(customerList);
     }
-    public void removeC(String name) throws IOException {
-        int index = findByName(name);
+    public void removeC(String id) throws IOException {
+        int index = findById(id);
         customerList.remove(index);
         customerFile.fileWriter(customerList);
     }
-    public void editC(String name, Customer customer) throws IOException {
-        int index = findByName(name);
+    public void editC(String id, Customer customer) throws IOException {
+        int index = findById(id);
         customerList.set(index,customer);
         customerFile.fileWriter(customerList);
     }
-    public Customer searchC(String name){
+    public Customer searchC(String id){
         for (Customer a :customerList
              ) {
-            if(a.getName().equalsIgnoreCase(name)){
+            if(a.getId().equalsIgnoreCase(id)){
                 return a;
             }
         }

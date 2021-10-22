@@ -103,14 +103,16 @@ public class BillView {
     }
 
 
-    private static Customer newCustomer() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Nhập tên khách hàng");
-        String name = input.nextLine();
-        System.out.println("Nhập địa chỉ");
-        String add = input.nextLine();
-        Customer customer = new Customer(name, add);
-        return customer;
+    private static Customer newCustomer(){
+        Scanner scanner1= new Scanner(System.in);
+        System.out.println("Nhập id khách hàng: ");
+        String id = scanner1.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập tên: ");
+        String name = scanner.nextLine();
+        System.out.println("Nhập địa chỉ: ");
+        String add = scanner.nextLine();
+        return new Customer(id,name,add);
     }
 }
 

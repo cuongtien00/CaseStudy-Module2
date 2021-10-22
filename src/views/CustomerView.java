@@ -45,14 +45,14 @@ public class CustomerView {
                     break;
                 case 2:
                     try {
-                        customerManager.removeC(inputName());
+                        customerManager.removeC(inputID());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     break;
                 case 3:
                     try {
-                        customerManager.editC(inputName(),newCustomer());
+                        customerManager.editC(inputID(),newCustomer());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -64,18 +64,21 @@ public class CustomerView {
             }
         }
     }
-    private static String inputName(){
+    private static String inputID(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập tên: ");
+        System.out.println("Nhập Id: ");
         return scanner.nextLine();
     }
     private static Customer newCustomer(){
+        Scanner scanner1= new Scanner(System.in);
+        System.out.println("Nhập id khách hàng: ");
+        String id = scanner1.nextLine();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập tên: ");
         String name = scanner.nextLine();
         System.out.println("Nhập địa chỉ: ");
         String add = scanner.nextLine();
-        return new Customer(name,add);
+        return new Customer(id,name,add);
     }
     private static void showMenu(){
         System.out.println("                                       　                     " + "＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");

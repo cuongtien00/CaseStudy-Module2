@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Customer implements Serializable {
+    private String id;
     private String name;
     private String address;
 
     public Customer() {
     }
 
-    public Customer(String name, String address) {
+    public Customer(String id, String name, String address) {
+        this.id = id;
         this.name = name;
         this.address = address;
     }
@@ -30,18 +32,19 @@ public class Customer implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-    public Customer inputInfo(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Nhập tên khách hàng");
-        String name = input.nextLine();
-        System.out.println("Nhập địa chỉ");
-        String add = input.nextLine();
-        return new Customer(name,add);
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "Khách hàng: " +name +", " +
+        return "Id: " + id+", "+
+                "Khách hàng: " +name +", " +
                 "Địa chỉ: " + address;
 
     }
