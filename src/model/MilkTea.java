@@ -11,7 +11,15 @@ public class MilkTea implements Serializable {
     private String sugar;
     private String ice;
     private Topping topping;
+//    private int count;
 
+//    public int getCount() {
+//        return count;
+//    }
+
+//    public void setCount(int count) {
+//        this.count = count;
+//    }
 
     public MilkTea() {
     }
@@ -31,6 +39,7 @@ public class MilkTea implements Serializable {
         this.sugar = sugar;
         this.ice = ice;
         this.topping = topping;
+//        this.count = 0;
     }
 
     public String getCode() {

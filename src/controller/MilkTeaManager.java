@@ -64,22 +64,22 @@ public class MilkTeaManager {
         return 1;
     };
     public void showList(){
-        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――TRÀ SỮA―――――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――TRÀ SỮA――――――――――――――――――――――――――――――――――――――――――――――――――");
         for (int i = 0; i < 5; i++) {
             System.out.println("                  "+milkTeaList.get(i));
         }
-        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――TRÀ TRÁI CÂY―――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――TRÀ TRÁI CÂY――――――――――――――――――――――――――――――――――――――――――――――――");
 
         for (int i = 5; i <10 ; i++) {
             System.out.println("                  "+milkTeaList.get(i));
         }
-        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――TRÀ ĐẶC BIỆT ĐÀI LOAN――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――TRÀ ĐẶC BIỆT ĐÀI LOAN――――――――――――――――――――――――――――――――――――――――――――");
         for (int i = 10; i <milkTeaList.size() ; i++) {
             System.out.println("                  "+milkTeaList.get(i));
         }
         System.out.println("");
         System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  募茶");
-        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――DING―――――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――DING――――――――――――――――――――――――――――――――――――――――――――――――――");
         System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   どうぞお召し上がりくださいTEA");
         System.out.println("　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　   ～⊝～⊝～⊝～");
 

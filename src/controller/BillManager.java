@@ -54,6 +54,7 @@ public class BillManager {
         billFile.fileWriter(billList);
     }
 
+
     public void setBillList(List<Bill> billList) {
         this.billList = billList;
     }

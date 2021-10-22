@@ -97,7 +97,7 @@ public class ClientView {
         bill.setMilkTeaList(milkTeaList);
         Customer customer = findCustomer();
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Nhập code bill");
+        System.out.println("Nhập code bill: ");
         String codeBill = scanner2.nextLine();
         bill.setCode(codeBill);
         bill.setCustomer(customer);
@@ -140,6 +140,7 @@ public class ClientView {
             }
             Scanner input2 = new Scanner(System.in);
             System.out.println("Mời chọn size: ");
+            System.out.println("(size L + 10000)");
             String size = input2.nextLine();
             Scanner input3 = new Scanner(System.in);
             System.out.println("Chọn số lượng: ");
@@ -164,6 +165,9 @@ public class ClientView {
                     }
                 }
             }
+//            int count  = 0;
+//            count += quantity;
+//            milkTea.setCount(milkTea.getCount()+count);
 
 
             milkTea.setSize(size);
@@ -174,6 +178,7 @@ public class ClientView {
             milkTeaList.add(milkTea);
 
         }
+
     }
 
 }
