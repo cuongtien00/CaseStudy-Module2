@@ -68,7 +68,17 @@ public class ClientView {
                     buyMilkTea();
                     break;
                 case 4:
-                    billManager.showList();
+                    String code = inputCode();
+                    Bill bill = billManager.searchBill(code);
+                    if(bill!=null){
+                        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――DANH SÁCH HÓA ĐƠN――――――――――――――――――――――――――――――――――――――――――――――――");
+                        System.out.println(bill);
+                        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――～⊝～⊝～⊝～―――――――――――――――――――――――――――――――――――――――――――――――――――");
+
+                    }
+                    else {
+                        System.out.println("Không tìm thấy bill!");
+                    }
                     break;
                 case 0:
             }
@@ -86,6 +96,12 @@ public class ClientView {
         System.out.println("                                           　　　　                     " + "4. Xuất bill");
         System.out.println("                                           　　　　                     " + "0. Exit");
         System.out.println("                                           　　　　                     " + "Nhập lựa chọn: ");
+    }
+    private static String inputCode() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập id: ");
+        return scanner.nextLine();
+
     }
 
     private static void dingTeaMenu() {

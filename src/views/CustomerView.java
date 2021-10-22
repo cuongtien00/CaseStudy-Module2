@@ -60,6 +60,15 @@ public class CustomerView {
                 case 4:
                     customerManager.showList();
                     break;
+                case 5:
+                    Customer customer = customerManager.searchC(inputID());
+                    if(customer!=null){
+                        System.out.println(customer);
+                    }
+                    else {
+                        System.out.println("Không tìm thấy khách hàng");
+                    }
+                    break;
                 case 0:
             }
         }
@@ -88,6 +97,7 @@ public class CustomerView {
         System.out.println("                                           　　　　                     " +"2. Xóa customer : ");
         System.out.println("                                           　　　　                     " +"3. Sửa customer : ");
         System.out.println("                                           　　　　                     " +"4. Customer Menu: ");
+        System.out.println("                                           　　　　                     " +"5. Tìm khách hàng: ");
         System.out.println("                                           　　　　                     " +"0. Exit ");
         System.out.println("          ");
     }

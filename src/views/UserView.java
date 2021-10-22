@@ -1,9 +1,12 @@
 package views;
 
+import controller.CustomerManager;
 import controller.UserManager;
+import model.Customer;
 import model.User;
 import regex.AccountExample;
 import regex.PasswordExample;
+import storage.CustomerFile;
 import storage.UseFile;
 
 import java.io.IOException;
@@ -15,8 +18,16 @@ public class UserView {
 
     private static final String ADMIN = "admin";
     private static UserManager userManager = UserManager.getInstance();
+    private static CustomerManager customerManager = CustomerManager.getInstance();
 
     public void runUserView() {
+        try {
+            customerManager.setCustomerList(CustomerFile.getInstance().fileReader());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         Scanner scanner = new Scanner(System.in);
         insertAdminId();
         int choice = -1;
@@ -25,6 +36,7 @@ public class UserView {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
+                    Customer customer = newCustomer();
                     User user = creatUser();
                     boolean check = checkPassword(user);
 
@@ -40,13 +52,17 @@ public class UserView {
                     System.out.println("Client or Admin ? ");
                     String role = scanner3.nextLine();
                     user.setRole(role);
-                    System.out.println(user);
                     try {
                         userManager.addNewUser(user);
+                        customerManager.addNewC(customer);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     System.out.println("Đăng ký thành công!");
+                    System.out.println("Tài khoản");
+                    System.out.println(user);
+                    System.out.println("Khách hàng");
+                    System.out.println(customer);
                     break;
                 case 2:
                     login();
@@ -60,11 +76,33 @@ public class UserView {
 
     public void insertAdminId() {
         try {
-            userManager.addNewUser(new User("admin", "admin", ADMIN));
+            userManager.addNewUser(new User("Boycodon_sitinh", "12345678", ADMIN));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    private static Customer newCustomer(){
+        Scanner scanner1= new Scanner(System.in);
+        System.out.println("Nhập id khách hàng: ");
+        String id = scanner1.nextLine();
+        String trueId = null;
+        boolean check = customerManager.checkId(id);
+        while (check){
+            System.out.println("Id đã có người sử dụng");
+            System.out.println("Nhập lại id");
+            trueId = scanner1.nextLine();
+            check = customerManager.checkId(trueId);
+        }
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Nhập tên: ");
+            String name = scanner.nextLine();
+            System.out.println("Nhập địa chỉ: ");
+            String add = scanner.nextLine();
+            return new Customer(trueId,name,add);
+
+
+    }
+
 
     public void login() {
 

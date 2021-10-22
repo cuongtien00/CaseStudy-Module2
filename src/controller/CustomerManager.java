@@ -76,8 +76,17 @@ public class CustomerManager {
         }
         return null;
     }
+    public boolean checkId(String id){
+        boolean check = false;
+        for (Customer a:customerList ){
+            if(a.getId().equalsIgnoreCase(id)){
+                check = true;
+            }
+        }
+        return check;
+    }
     public void showList(){
-        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――DANH SÁCH KHÁCH HÀNG――――――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――――レシート――――――――――――――――――――――――――――――――――――――――――――――――――――");
         for (Customer a:customerList) {
             System.out.println("                                                                 "+a);
         }

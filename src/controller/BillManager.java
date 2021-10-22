@@ -53,6 +53,14 @@ public class BillManager {
         billList.remove(index);
         billFile.fileWriter(billList);
     }
+    public Bill searchBill(String code){
+        for (Bill a:billList) {
+            if(a.getCode().equalsIgnoreCase(code)){
+                return a;
+            }
+        }
+        return null;
+    }
 
 
     public void setBillList(List<Bill> billList) {
